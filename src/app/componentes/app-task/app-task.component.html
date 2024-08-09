@@ -1,0 +1,33 @@
+@if (isAddingTask){
+<!-- invocamon close , metodo agregado
+ userId le estamos dando el userId conseguido del componente puesto de este app-task en el app component ahi ya lo tiene y se lo seteamos al otro input userid del componente new task
+ al principio medio confuso pero si se entiende :)-->
+<app-new-task [userId]="userId" (close)="onCloseAddTask()"></app-new-task>
+<!--ya no usado(addTarea)="onAddTask($event)"-->
+}
+<section id="tasks">
+
+    <header>
+        <h2>Tareas de {{name}} </h2>
+
+        <menu>
+            <button type="button" (click)="onStartAddTask()">Agregar tarea.</button>
+        </menu>
+    </header>
+
+    <ul>
+        <!--iteramos en las tasks del usuario seleccionado -->
+        @for(task of selectedUserTasks; track task.id){
+        <!-- event donde se reenvian los datos-->
+        <li>
+            <app-task [task]="task" (complete)="onCompleteTask($event)"></app-task>
+        </li>
+        }
+
+    </ul>
+</section>
+
+<!--
+En Angular, los componentes padre e hijo pueden comunicarse a través de inputs y outputs. Los inputs permiten que los datos fluyan del padre al hijo, mientras que los outputs permiten que el hijo emita eventos hacia el padre. Este mecanismo es útil para manejar interacciones, como cerrar un modal cuando se hace clic en un botón dentro de un componente hijo.
+
+-->

@@ -1,0 +1,16 @@
+<!--<div class="">
+    <button (click)="onSelectUser()">
+        <img src="{{imagePath()}}" [alt]="selectedUser.name">
+        <span>{{selectedUser.name}}</span>
+    </button>
+</div>-->
+
+<app-card>
+    <!-- de angular valida si es activo, llama al metodo si es true-->
+    <button [class.active]="selected" (click)="onSelectUser()">
+        <img src="{{imagePath()}}" [alt]="user.name">
+        <span>{{user.name}}</span>
+    </button>
+</app-card>
+
+

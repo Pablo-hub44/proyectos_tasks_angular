@@ -1,0 +1,27 @@
+<div class="backdrop" (click)="onCancel()"></div>
+<dialog open>
+    <h2>Agregar tarea</h2>
+    <form action="" (ngSubmit)="onSubmit()">
+        <!--ngsubmit para poder enviar los datos-->
+        <p>
+            <label for="title">Titulo</label>
+            <input type="text" id="title" name="titulo" placeholder="Enter task title" [(ngModel)]="titulo" />
+            <!-- como lo usaba #name="ngModel" [(ngModel)]="user.name" con esto le damos un #nombre y lo metemos al ngModel de nuestro objeto(en su propiedad) que se va a modificar del modelo-->
+        </p>
+
+        <p>
+            <label for="summary">Summary</label>
+            <textarea id="summary" rows="5" name="summary" placeholder="Enter task summary" [(ngModel)]="resumen"></textarea>
+        </p>
+
+        <p>
+            <label for="due-date">Due Date</label>
+            <input type="date" id="due-date" name="due-date" [(ngModel)]="fecha" />
+        </p>
+
+        <p class="actions">
+            <button type="button" (click)="onCancel()">Cancelar</button>
+            <button type="submit">Crear</button>
+        </p>
+    </form>
+</dialog>

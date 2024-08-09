@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<main>
+    <ul id="users">
+        <!--iteracion  de versiones nuevas -->
+        <!--@for (user of users; track user.id) {-->
+        <li *ngFor="let user of users">
+            <!-- selected validando si el user id de la iteracion es el id del user seleccionado, propiedad definida en userComponent-->
+            <app-user [user]="user" (select)="onSelectUser($event)" [selected]="user.id == selectedUserId"></app-user>
+        </li>
+        <!-- } -->
+        <!-- <li> antes-->
+        <!--<app-user [id]="users[0].id"  [avatar]="users[0].avatar" [name]="users[0].name" (select)="onSelectUser($event)"></app-user>-->
+        <!--<app-user [user]="users[0]"></app-user> -->
+        <!--</li>-->
+
+    </ul>
+
+
+    <!-- validamos, si es T se muestra si no no-->
+    <!--@if(selectedUser){ -->
+    <app-app-task *ngIf="selectedUser else fallback" [name]="selectedUser.name" [userId]="selectedUser.id"></app-app-task>
+    <!--} @else {  -->
+    <ng-template #fallback>
+        <p id="fallback"> Selecciona un usuario para ver sus tareas. </p>
+
+    </ng-template>
+    <!--}  -->
+</main>
+<footer>
+    Derechos reservados
+</footer>
